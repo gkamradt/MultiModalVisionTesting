@@ -20,6 +20,8 @@ pip install -r requirements.txt
 python3 main.py
 ```
 
+![results](static/ResultsViz.jpeg)
+
 This repo already contains all of the results and images from the test.
 
 If you want want to run a single test by yourself, delete the result from the results file you want to run and then run the script.
