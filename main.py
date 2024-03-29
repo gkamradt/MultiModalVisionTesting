@@ -86,12 +86,16 @@ class VisionTestingTest:
         return distribution
 
     def reset_results(self):
+        # Delete all results
         with open(self.results_file_path, 'w') as file:
             json.dump([], file)
 
-        # Delete all images
-        for file in os.listdir(self.image_dir):
-            os.remove(os.path.join(self.image_dir, file))
+        # Delete all images in each subfolder within the image_dir
+        for subdir in os.listdir(self.image_dir):
+            subdir_path = os.path.join(self.image_dir, subdir)
+            if os.path.isdir(subdir_path):  # Ensure it's a directory
+                for file in os.listdir(subdir_path):
+                    os.remove(os.path.join(subdir_path, file))
 
     def should_skip_combination(self, num_characters):
         for item in self.processed_results:
